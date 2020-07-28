@@ -12,7 +12,13 @@ namespace TaskList
         public void Run()
         {
             List<string> taskList = ReadListFromFile();
-            PrintTaskList(taskList);
+            var quit = false;
+
+            do
+            {
+                PrintTaskList(taskList);
+                InputTaskToList(taskList);
+            } while (!quit);
         }
 
         private void PrintTaskList(List<string> taskList)
@@ -26,7 +32,7 @@ namespace TaskList
         private List<string> ReadListFromFile()
         {
             var taskList = new List<string>();
-
+              
             try
             {
 
