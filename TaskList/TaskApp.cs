@@ -42,14 +42,14 @@ namespace TaskList
             Console.WriteLine();
         }
 
-        private bool HandleUserInput(Console Key)
+        private bool HandleUserInput(ConsoleKey)
         {
             var hasTasks = tasks.Any();
 
             switch (Key)
             {
                 case ConsoleKey.A:
-                    InputTaskToList(taskList); //taskList in () may break it. keep an eye on.
+                    InputTaskToList(taskList); 
                     break;
                 case ConsoleKey.D when hasTasks:
                     DeleteCurrentlySelectedTask();
@@ -60,7 +60,7 @@ namespace TaskList
                 case ConsoleKey.DownArrow when hasTasks:
                     SelectNextUnactionedTask();
                     break;
-                case ConcoleKey.Enter when hasTasks:
+                case ConsoleKey.Enter when hasTasks:
                     Work OnSelectedTask();
                     break;
                 case ConsoleKey.Q:
@@ -70,7 +70,7 @@ namespace TaskList
             return false;
         }
 
-        private void PrintTaskList(List<string> taskList) //contents in () may break. watch
+        private void PrintTaskList(List<string> taskList) 
         {
             Console.Clear();
 
@@ -105,7 +105,7 @@ namespace TaskList
             ConsoleKey key;
 
             PrintUsageOptions();
-            key = GetInputFromUser());
+            key = GetInputFromUser();
 
             return key;
         }
@@ -128,7 +128,7 @@ namespace TaskList
                     case ConsoleKey.R:
                         ReenterTask();
                         valid = true;
-                        break
+                        break;
                     case ConsoleKey.C:
                         DeleteCurrentlySelectedTask();
                         valid = true;
@@ -298,8 +298,8 @@ namespace TaskList
                 using (StreamWriter sw = new StreamWriter(filename))
                 {
                     for (int i = 0; i < tasks.Count; ++i)
-                    { 
-                        sw.WriteLine($"{tasks[i]}\xle{isActioned[i]}")
+                    {
+                        sw.WriteLine($"{tasks[i]}\xle{isActioned[i]}");
                     }
                 }
             }
