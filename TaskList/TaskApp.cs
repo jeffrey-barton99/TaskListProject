@@ -46,7 +46,7 @@ namespace TaskList
         {
             var hasTasks = tasks.Any();
 
-            switch (Key)
+            switch (key)
             {
                 case ConsoleKey.A:
                     InputTaskToList(taskList); 
@@ -61,7 +61,7 @@ namespace TaskList
                     SelectNextUnactionedTask();
                     break;
                 case ConsoleKey.Enter when hasTasks:
-                    Work OnSelectedTask();
+                    WorkOnSelectedTask();
                     break;
                 case ConsoleKey.Q:
                     return true;
@@ -80,7 +80,7 @@ namespace TaskList
 
             for (int i = startingPoint: (i < endingPoint) && (i < tasks.Count); ++i)
             {
-                if (isActionedActioned[i])
+                if (isActioned[i])
                 {
                     Console.ForegroundColor = Console.ForegroundColor.DarkGray;
                 }
@@ -292,8 +292,8 @@ namespace TaskList
             }
             catch (FileNotFoundException)
             { ; }
-        
-        private void WriteListToFile()
+
+            private void WriteListToFile()
             {
                 using (StreamWriter sw = new StreamWriter(filename))
                 {
